@@ -9,7 +9,6 @@ async function fetchData(locationValue = "mumbai") {
       throw new Error(`Response status: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Fetch error:", error);

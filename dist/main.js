@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/fetch */ \"./src/utils/fetch.js\");\n\n\n(0,_utils_fetch__WEBPACK_IMPORTED_MODULE_0__.fetchData)(\"london\");\n\n\n//# sourceURL=webpack://template/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/fetch */ \"./src/utils/fetch.js\");\n/* harmony import */ var _utils_processFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/processFetch */ \"./src/utils/processFetch.js\");\n\n\n\nasync function main() {\n  try {\n    const weatherData = await (0,_utils_fetch__WEBPACK_IMPORTED_MODULE_0__.fetchData)(\"london\");\n    const data = await (0,_utils_processFetch__WEBPACK_IMPORTED_MODULE_1__.processData)(weatherData);\n    console.log(data.location);\n    console.log(data.temperature);\n    console.log(data.feelslike);\n    console.log(data.wind);\n    console.log(data.humidity);\n  } catch (error) {\n    console.error(\"Error in main function:\", error);\n  }\n}\n\nmain();\n// const data = processData(weatherData);\n\n// console.log(data.location);\n// console.log(data.temperature);\n// console.log(data.feelslike);\n// console.log(data.wind);\n// console.log(data.humidity);\n\n// async function main() {\n//     try {\n//       const weatherData = await fetchData(\"london\");\n//       const data = await processData(weatherData);\n\n//   console.log(data.location);\n//   console.log(data.temperature);\n//   console.log(data.feelslike);\n//   console.log(data.wind);\n//   console.log(data.humidity);\n//     } catch (error) {\n//       console.error(\"Error in main function:\", error);\n//     }\n//   }\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   fetchData: () => (/* binding */ fetchData)\n/* harmony export */ });\nasync function fetchData(locationValue = \"mumbai\") {\n  const key = \"37H7MA39XFZDZ3H3VNZVBVQAC\";\n  try {\n    const response = await fetch(\n      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationValue}?key=${key}`,\n      { mode: \"cors\" }\n    );\n    if (!response.ok) {\n      throw new Error(`Response status: ${response.status}`);\n    }\n    const data = await response.json();\n    console.log(data);\n    return data;\n  } catch (error) {\n    console.error(\"Fetch error:\", error);\n  }\n}\n\n\n\n\n//# sourceURL=webpack://template/./src/utils/fetch.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   fetchData: () => (/* binding */ fetchData)\n/* harmony export */ });\nasync function fetchData(locationValue = \"mumbai\") {\n  const key = \"37H7MA39XFZDZ3H3VNZVBVQAC\";\n  try {\n    const response = await fetch(\n      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationValue}?key=${key}`,\n      { mode: \"cors\" }\n    );\n    if (!response.ok) {\n      throw new Error(`Response status: ${response.status}`);\n    }\n    const data = await response.json();\n    // console.log(data);\n    return data;\n  } catch (error) {\n    console.error(\"Fetch error:\", error);\n  }\n}\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/utils/fetch.js?");
+
+/***/ }),
+
+/***/ "./src/utils/processFetch.js":
+/*!***********************************!*\
+  !*** ./src/utils/processFetch.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   processData: () => (/* binding */ processData)\n/* harmony export */ });\n/* harmony import */ var _fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetch */ \"./src/utils/fetch.js\");\n\n\n// Write the functions that process the JSON data\n// you’re getting from the API and return an object\n//  with only the data you require for your app.\n\nasync function processData(weatherData) {\n  const dataObj = {\n    location: weatherData.address,\n    temperature: weatherData.days[0].temp,\n    feelslike: weatherData.days[0].feelslike,\n    wind: weatherData.days[0].windspeed,\n    humidity: weatherData.days[0].humidity,\n  };\n\n  return dataObj;\n}\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/utils/processFetch.js?");
 
 /***/ })
 
