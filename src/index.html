@@ -6,11 +6,32 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <label for="searchLoc">Enter location</label>
-      <input type="search" id="searchLoc" placeholder="Search location" />
-      <span id="error"></span>
-      <button type="button" id="searchBtn">Click</button>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="searchDiv">
+        <label for="searchLoc">Enter location: </label>
+        <input
+          type="search"
+          id="searchLoc"
+          placeholder="Search location"
+          autocomplete="off"
+        />
+        <span id="errorSearch">* Enter correct value</span>
+        <button type="button" id="searchBtn">Click</button>
+      </div>
+      <div id="loading" style="display: none">Loading...</div>
+      <div class="content">
+        <div class="contentHead">
+          <div class="conditions">Mild</div>
+          <div class="address">Mumbai</div>
+        </div>
+        <div class="temperature">25<span class="tempDegree">&deg;f</span></div>
+        <div class="sidebar">
+          <div class="feelslike">75<span class="tempFeel">&deg;f</span></div>
+          <div class="wind">26km/h</div>
+          <div class="humidity">90%</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

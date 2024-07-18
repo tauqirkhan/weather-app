@@ -1,7 +1,6 @@
-import { fetchData } from "./fetch";
-
 async function processData(weatherData) {
   const dataObj = {
+    conditions: weatherData.days[0].conditions,
     location: weatherData.resolvedAddress,
     temperature: weatherData.days[0].temp,
     feelslike: weatherData.days[0].feelslike,
